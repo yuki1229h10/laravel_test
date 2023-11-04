@@ -10,5 +10,6 @@ class BookController extends Controller
     {
         // $books = Book::all();
         // return view('books.index', compact('books'));
+        return view('books.index');
     }
 }
