@@ -28,4 +28,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::get('/post/{id}/{name}', function ($id, $name) {
+    return 'This is post number ' . $id . ' ' . $name;
+});
+
+Route::get('admin/posts/example', array('as' => 'admin.home', function () {
+    $url = route('admin.home');
+
+    return 'This url is ' . $url;
+}));
+
+require __DIR__ . '/auth.php';
