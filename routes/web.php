@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth:users'])->name('dashboard');
 
 Route::get('/index', [BookController::class, 'index']);
 Route::get('/servicecontainertest', [LifeCycleTestController::class, 'showServiceContainerTest']);
