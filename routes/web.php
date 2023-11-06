@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\LifeCycleTestController;
+use Illuminate\Session\Middleware\AuthenticateSession;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,33 +19,23 @@ use App\Http\Controllers\LifeCycleTestController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('user.dashboard');
 })->middleware(['auth:users'])->name('dashboard');
 
+Route::get('/', function () {
+    return view('user.dashboard');
+})->name('login');
+
 Route::get('/index', [BookController::class, 'index']);
-Route::get('/servicecontainertest', [LifeCycleTestController::class, 'showServiceContainerTest']);
-Route::get('/serviceprovidertest', [LifeCycleTestController::class, 'showServiceProviderTest']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-Route::get('/post/{id}/{name}', function ($id, $name) {
-    return 'This is post number ' . $id . ' ' . $name;
-});
-
-Route::get('admin/posts/example', array('as' => 'admin.home', function () {
-    $url = route('admin.home');
-
-    return 'This url is ' . $url;
-}));
-
-Route::resource('posts', 'PostController');
 
 require __DIR__ . '/auth.php';

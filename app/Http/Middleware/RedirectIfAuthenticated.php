@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 class RedirectIfAuthenticated
 {
     private const GUARD_USER = 'users';
-    private const GUARD_OWNERS = 'owners';
+    private const GUARD_OWNER = 'owners';
     private const GUARD_ADMIN = 'admin';
 
     /**
