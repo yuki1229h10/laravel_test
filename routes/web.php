@@ -45,4 +45,6 @@ Route::get('admin/posts/example', array('as' => 'admin.home', function () {
     return 'This url is ' . $url;
 }));
 
+Route::resource('posts', 'PostController');
+
 require __DIR__ . '/auth.php';
