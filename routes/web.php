@@ -26,10 +26,6 @@ Route::get('/dashboard', function () {
     return view('user.dashboard');
 })->middleware(['auth:users'])->name('dashboard');
 
-Route::get('/', function () {
-    return view('user.dashboard');
-})->name('login');
-
 Route::get('/index', [BookController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
