@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('user.welcome');
 });
 
+Route::get('/home', function () {
+    return view('user.home');
+});
+
 Route::get('/dashboard', [BookController::class, 'index'])->middleware(['auth:users'])
     ->name('dashboard');
 
